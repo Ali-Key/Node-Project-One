@@ -13,12 +13,22 @@ app.get("/api/users", async (req, res) => {
   } else {
     res.status(404).json({ message: "The users information could not be retrieved" });
   }
-});
+}),
 
 // GET USER BY ID
 
+app.get("/api/users/:id", async (req, res) => {
+  const user = await findById(req.params.id);
+  if (user) {
+    res.json(user);
+  }
+  else {
+    res.status(404).json({message: 'User not found  in database'});
+  }
+});
 
 // CREATE A NEW USER
+
 
 // UPDATE A USER
 
