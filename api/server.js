@@ -25,10 +25,17 @@ app.get("/api/users/:id", async (req, res) => {
   else {
     res.status(404).json({message: 'User not found  in database'});
   }
-});
+}),
 
 // CREATE A NEW USER
-
+app.post("/api/users", async (req, res) => {
+  const Newuser = await insert(req.body);
+  if (Newuser) {
+    res.json(Newuser);
+  } else {
+    res.status(400).json({ message: "was not a found" });
+  }
+});
 
 // UPDATE A USER
 
