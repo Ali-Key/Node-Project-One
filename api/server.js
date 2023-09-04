@@ -49,6 +49,15 @@ app.put('/api/users/:id', async (req, res) => {
 });
 
 // DELETE A USER  
+app.delete('/api/users/:id', async (req, res) => {
+    const deleteUser = await  remove(req.params.id);
+    if (deleteUser){
+        res.status(200).json({ message :`user was  ${req.params.id}  deleted`});
+    }
+    else {
+        res.status(404).json({ message :"User was not deleted" });
+    }
+});
 
 
 // export default app
