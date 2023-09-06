@@ -42,6 +42,7 @@ app.put('/api/users/:id', async (req, res) => {
     const User = await update(req.params.id, req.body);
     if(User){
         res.json(User);
+        // res.status(200).json({message: 'User already  was updated successfully'});
     }
     else {
         res.status(400).json({ message :'user was not updated' });
